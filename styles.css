@@ -1,0 +1,478 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #1a4d1a, #2e7d32);
+  background-attachment: fixed;
+  color: white;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 300vmax;
+  height: 300vmax;
+  top: -150vmax;
+  left: -150vmax;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.03);
+  transform-origin: 50% 50%;
+  animation: rotate 60s linear infinite, pulseOpacity 10s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+
+body::after {
+  animation: rotate 40s linear infinite reverse,
+    pulseOpacity 8s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.02);
+  transform-origin: 49% 51%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseOpacity {
+  0%,
+  100% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.06;
+  }
+}
+
+/* Animated background */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particles span {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  animation: floatParticle 15s linear infinite;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--translate-x, 100px), -100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.particles span:nth-child(odd) {
+  --translate-x: 100px;
+}
+.particles span:nth-child(even) {
+  --translate-x: -100px;
+}
+
+/* Updated download button with jumping animation */
+.download-btn {
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: jumpButton 2s ease-in-out infinite, glowPulse 3s infinite;
+  position: relative;
+}
+
+@keyframes jumpButton {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(46, 125, 50, 0.6);
+  }
+}
+
+.download-btn:hover {
+  background: #1b5e20;
+  animation-play-state: paused;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Optimize animations for mobile */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    animation-duration: 90s;
+  }
+
+  .particles span {
+    display: none;
+  }
+}
+
+/* Add viewport-based font sizing for better mobile scaling */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 100vh;
+  height: auto;
+}
+
+.animate-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: slideInFade 1.5s ease-out;
+  text-shadow: 0 0 20px rgba(46, 125, 50, 0.5), 0 0 40px rgba(46, 125, 50, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #ffffff, #a5d6a7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.animate-title:first-child {
+  font-size: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.animate-title:nth-child(2) {
+  font-size: 1.8rem;
+  opacity: 0.9;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  background: none;
+  color: white;
+  text-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
+}
+
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 800px;
+  }
+
+  .animate-title:first-child {
+    font-size: 3.5rem;
+  }
+
+  .animate-title:nth-child(2) {
+    font-size: 1.5rem;
+  }
+
+  .qr-container,
+  .download-btn {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .animate-title:first-child {
+    font-size: 2.8rem;
+  }
+
+  .animate-title:nth-child(2) {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .animate-title:first-child {
+    font-size: 2.2rem;
+  }
+
+  .animate-title:nth-child(2) {
+    font-size: 1.1rem;
+  }
+}
+
+.download-section {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.qr-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  animation: popIn 1s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.qr-container img {
+  width: 100%;
+  height: auto;
+}
+
+.credits {
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.credits ul {
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+@media (max-width: 480px) {
+  .credits ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .credits li {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.credits h2 {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.credits ul {
+  list-style: none;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+.credits li {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  animation: fadeSlideIn 0.5s ease-out backwards;
+}
+
+.credits li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.credits li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.credits li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.credits li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.credits li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.credits li:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.course {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  background: rgba(46, 125, 50, 0.3);
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.school {
+  margin-top: 3rem;
+  padding: 1.5rem;
+}
+
+.school p {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.logo {
+  max-width: 600px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Add mobile-specific logo size */
+@media (max-width: 768px) {
+  .logo {
+    max-width: 200px; /* Smaller on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 160px; /* Even smaller on very small devices */
+    padding: 0.75rem;
+  }
+}
+
+.logo:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Add touch device optimization */
+@media (hover: none) {
+  .qr-container:hover,
+  .download-btn:hover,
+  .credits li:hover,
+  .logo:hover {
+    transform: none;
+  }
+}
+
+/* Ensure minimum tap target size */
+.credits li,
+.download-btn {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix background animation for mobile */
+@media (max-width: 768px) {
+  body::before {
+    animation-duration: 30s; /* Slower animation on mobile */
+  }
+}
