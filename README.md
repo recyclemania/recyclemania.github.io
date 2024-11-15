@@ -4,4 +4,4 @@
 
 ### TIIGR 22/25 School Project
 
-2024/25
+2024
