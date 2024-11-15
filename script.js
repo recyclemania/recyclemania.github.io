@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Generate QR Code with direct GitHub download link
   const qr = qrcode(0, "M");
   const downloadUrl =
     "https://github.com/recyclemania/RecycleManiaAPK/releases/download/downloadAPK/recyclemania.apk";
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("qrcode").innerHTML = qr.createImgTag(10);
 
-  // Download button functionality
   document.getElementById("downloadBtn").addEventListener("click", function () {
     const link = document.createElement("a");
     link.href = downloadUrl;
