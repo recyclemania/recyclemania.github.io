@@ -6,11 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   qr.make();
 
   document.getElementById("qrcode").innerHTML = qr.createImgTag(10);
-main
+
   document.getElementById("qrcodeLarge").innerHTML = qr.createImgTag(10);
 
-
- main
   document.getElementById("downloadBtn").addEventListener("click", function () {
     const link = document.createElement("a");
     link.href = downloadUrl;

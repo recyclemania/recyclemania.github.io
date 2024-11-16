@@ -235,7 +235,6 @@ html {
     0 0 40px rgba(129, 199, 132, 0.3);
   position: relative;
   margin-top: 0.5rem;
- main
 }
 
 .animate-title:nth-child(2)::after {
@@ -254,26 +253,6 @@ html {
   animation: lineMove 2s infinite;
 }
 
-
-}
-
-.animate-title:nth-child(2)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    transparent 100%
-  );
-  animation: lineMove 2s infinite;
-}
-
- main
 @keyframes shine {
   0% {
     background-position: 200% center;
@@ -297,16 +276,10 @@ html {
 @keyframes lineMove {
   0% {
     background-position: -100% 0;
- main
   }
   100% {
     background-position: 200% 0;
   }
-
-  }
-  100% {
-    background-position: 200% 0;
-  } main
 }
 
 @media (max-width: 1024px) {
@@ -550,7 +523,6 @@ html {
 @media (max-width: 768px) {
   body::before {
     animation-duration: 30s;
-main
   }
 }
 
@@ -841,7 +813,5 @@ main
   #qrcodeLarge img {
     width: 300px;
     height: 300px;
-
- main
   }
 }
